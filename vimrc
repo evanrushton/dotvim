@@ -10,6 +10,7 @@
 " Stephen Bach http://items.sjbach.com/319/configuring-vim-right
 " Drew Neil http://vimcasts.org/episodes/page/7/
 execute pathogen#infect()
+call pathogen#helptags()
 filetype plugin indent on
 
 " show existing tab with 2 spaces width
