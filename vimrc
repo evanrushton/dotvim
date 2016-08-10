@@ -29,15 +29,33 @@ set hidden
 set listchars=tab:▸\ ,eol:¬
 
 " =============== Mappings =========================
+let mapleader = "\<Space>"
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <Space> <nop>
+
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap jj <ESC>
+
+" Enter visual line mode with <Space><Space>:
+nmap <Leader><Leader> V
+
+" Split window and focus in new split
+nnoremap <leader>w <C-w>v<C-w>l
 
 " Shortcut to rapidly toggle 'set list'
 nmap <leader>l :set list!<CR>
 
-" Space in normal mode allows for insert single character
-nmap <Space> i_<Esc>r
+" Directly open .vimrc in a new tab
+nnoremap <leader>v :tabedit $MYVIMRC<CR>
 
 " Breaking lines with \[enter] without having to go to insert mode
-nmap <leader><CR> i<CR><Esc>
+nnoremap <leader><CR> i<CR><Esc>
 
 " https://github.com/skwp/dotfiles/blob/master/vimrc
 " ================ Completion =======================
@@ -67,6 +85,11 @@ set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
+
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost ~/.vim/vimrc source $MYVIMRC
+endif
 
 syntax enable
 colorscheme feral
